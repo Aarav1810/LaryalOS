@@ -1,1 +1,7 @@
-kernel.c~
+boot.o
+kernel.o
+grub.cfg
+os.iso
+myos.bin
+iso/*
+
