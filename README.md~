@@ -7,8 +7,8 @@ and build as shown in the instructions on the link, preferrably
 on a Unix-like system. Then, you run the 3 commands listed in <code>build.sh</code>
 and use <code>qemu-system-i386 -kernel myos.bin</code>. You've got it!
 
-At the moment, we are working on improving keyboard control in our operating system
-through further development, and then we are working on adding a C library and 
+At the moment, we are working on adding keyboard input to our operating system
+through a scan code table, and then we are working on adding a C library and 
 a userland space. There are no plans to add a GUI anytime soon...
 
 Created by Safal Aryal and Aarav Lodha. Based on <a href="https://wiki.osdev.org">OSDev's</a> 'bare bones' guide.

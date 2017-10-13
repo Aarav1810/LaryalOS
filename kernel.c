@@ -159,6 +159,7 @@ uint16_t* terminal_buffer;
 
 char getScancode() {
     char c=0;
+    outb(0x60, 0x0);
     do {
         if(inb(0x60)!=c) {
             c=inb(0x60);
@@ -169,7 +170,7 @@ char getScancode() {
 }
 
 char getchar() {
-    return scancode[getScancode()+1];
+    return scancode[getScancode()];
 }
 
 void terminal_initialize(void) {
@@ -208,7 +209,8 @@ void terminal_putchar(char c) {
 }
 
 void terminal_kinput(){
-	terminal_putchar(getchar());
+	char input = getchar();
+	terminal_putchar(input);	
 }
  
 void terminal_write(const char* data, size_t size) {
@@ -230,8 +232,9 @@ void kernel_main(void) {
 	/* Newline support is left as an exercise. */
 	terminal_writestring("Welcome to LaryalOS! \n");
 	terminal_writestring("Version 0.001. Type HELP for a list of commands \n");
+	terminal_writestring("> ");	
 	
-	while(true) {
+	while(1) {
 		terminal_kinput();	
 	}
 }
