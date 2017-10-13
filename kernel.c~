@@ -206,10 +206,6 @@ void terminal_putchar(char c) {
 		terminal_column = 0;
 	}	
 }
-
-void terminal_kinput(){
-	terminal_putchar(getchar());
-}
  
 void terminal_write(const char* data, size_t size) {
 	for (size_t i = 0; i < size; i++)
@@ -230,9 +226,5 @@ void kernel_main(void) {
 	/* Newline support is left as an exercise. */
 	terminal_writestring("Welcome to LaryalOS! \n");
 	terminal_writestring("Version 0.001. Type HELP for a list of commands \n");
-	
-	while(true) {
-		terminal_kinput();	
-	}
 }
 
