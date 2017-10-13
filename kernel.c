@@ -210,7 +210,13 @@ void terminal_putchar(char c) {
 
 void terminal_kinput(){
 	char input = getchar();
-	terminal_putchar(input);	
+	terminal_putchar(input);
+	
+	if(getchar()=='\n') {
+		terminal_row++;
+		terminal_column = 0;
+		terminal_putchar('>');
+	}
 }
  
 void terminal_write(const char* data, size_t size) {
