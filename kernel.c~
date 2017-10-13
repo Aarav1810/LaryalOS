@@ -207,15 +207,6 @@ void terminal_putchar(char c) {
 		terminal_column = 0;
 	}	
 }
- 
-void terminal_write(const char* data, size_t size) {
-	for (size_t i = 0; i < size; i++)
-		terminal_putchar(data[i]);
-}
- 
-void terminal_writestring(const char* data) {
-	terminal_write(data, strlen(data));
-}
 
 void terminal_kinput(){
 	char input = getchar();
@@ -224,8 +215,17 @@ void terminal_kinput(){
 	if(getchar()=='\n') {
 		terminal_row++;
 		terminal_column = 0;
-		terminal_writestring("> ");
+		terminal_putchar('>');
 	}
+}
+ 
+void terminal_write(const char* data, size_t size) {
+	for (size_t i = 0; i < size; i++)
+		terminal_putchar(data[i]);
+}
+ 
+void terminal_writestring(const char* data) {
+	terminal_write(data, strlen(data));
 }
  
 #if defined(__cplusplus)
